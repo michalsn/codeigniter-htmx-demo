@@ -2,7 +2,7 @@
 
 namespace Michalsn\CodeIgniterHtmxDemo\Config;
 
-$routes->get('/', static function () {
+$routes->get('demo', static function () {
     return view('Michalsn\CodeIgniterHtmxDemo\Views\home');
 });
 

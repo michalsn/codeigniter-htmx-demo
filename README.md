@@ -31,3 +31,7 @@ Before running the examples you have to migrate the database. Make sure you have
 And preferably run the seeds:
 
     php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedBooksTable
+
+## Running the demo
+
+The default route to the demo page is `demo`.
