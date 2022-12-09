@@ -1,4 +1,4 @@
-<?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
+<?php $this->extend('Michalsn\CodeIgniterDemoHtmx\Views\layout') ?>
 
 <?php $this->section('content') ?>
 
@@ -61,11 +61,11 @@
                         </div>
                         <div class="list-group list-group-flush <?= count($tasks) === 0 ? 'd-none': ''; ?>" id="task-list">
                             <?php foreach ($tasks as $task): ?>
-                                <?= $this->setVar('task', $task)->include('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task'); ?>
+                                <?= $this->setVar('task', $task)->include('Michalsn\CodeIgniterDemoHtmx\Views\tasks\task'); ?>
                             <?php endforeach; ?>
                         </div>
                         <div class="card-footer">
-                            <?= $this->include('Michalsn\CodeIgniterHtmxDemo\Views\tasks\tasks_summary'); ?>
+                            <?= $this->include('Michalsn\CodeIgniterDemoHtmx\Views\tasks\tasks_summary'); ?>
                         </div>
                     </div>
                     <?php $this->endFragment(); ?>

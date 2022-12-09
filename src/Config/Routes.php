@@ -1,12 +1,12 @@
 <?php
 
-namespace Michalsn\CodeIgniterHtmxDemo\Config;
+namespace Michalsn\CodeIgniterDemoHtmx\Config;
 
 $routes->get('demo', static function () {
-    return view('Michalsn\CodeIgniterHtmxDemo\Views\home');
+    return view('Michalsn\CodeIgniterDemoHtmx\Views\home');
 });
 
-$routes->group('books', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
+$routes->group('books', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
     $routes->get('/', 'Books::index');
     $routes->get('table', 'Books::table');
     $routes->get('show/(:num)', 'Books::show/$1');
@@ -15,7 +15,7 @@ $routes->group('books', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controller
     $routes->match(['get', 'post'], 'add', 'Books::add');
 });
 
-$routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
+$routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
     $routes->get('/', 'Tasks::index');
     $routes->get('(active|completed)', 'Tasks::index/$1');
     $routes->post('/', 'Tasks::add');

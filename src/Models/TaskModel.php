@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterHtmxDemo\Models;
+namespace Michalsn\CodeIgniterDemoHtmx\Models;
 
 use CodeIgniter\Model;
 
