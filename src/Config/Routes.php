@@ -26,3 +26,9 @@ $routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controller
     $routes->get('summary', 'Tasks::summary');
 });
 
+$routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
+    $routes->get('/', 'Paragraphs::index');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'Paragraphs::edit/$1');
+    $routes->post('reorder', 'Paragraphs::reorder');
+});
+
