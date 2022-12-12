@@ -31,6 +31,7 @@ Before running the examples you have to migrate the database. Make sure you have
 And preferably run the seeds:
 
     php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedBooksTable
+    php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedParagraphsTable
 
 ## Running the demo
 
