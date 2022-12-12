@@ -3,7 +3,6 @@
 namespace Michalsn\CodeIgniterDemoHtmx\Controllers;
 
 use App\Controllers\BaseController;
-use Michalsn\CodeIgniterDemoHtmx\Models\BookModel;
 use Michalsn\CodeIgniterDemoHtmx\Models\TaskModel;
 
 class Tasks extends BaseController
