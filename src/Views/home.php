@@ -19,7 +19,7 @@
 
 <div class="page-body">
     <div class="container-fluid">
-        <div class="row row-deck row-cards">
+        <div class="row">
 
             <div class="col-sm-6 col-lg-6">
                 <div class="card">
@@ -28,7 +28,7 @@
                             Things you should do before running this demo
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pb-0">
                         <h4>1. Migrate the database</h4>
                         <div>
                             <pre><code>php spark migrate --all</code></pre>
@@ -36,6 +36,7 @@
                         <h4>2. Load sample data</h4>
                         <div>
                             <pre><code>php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedBooksTable</code></pre>
+                            <pre><code>php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedParagraphsTable</code></pre>
                         </div>
                     </div>
                 </div>
@@ -51,12 +52,16 @@
                     <div class="card-body">
                         <ul hx-boost="true">
                             <li>
-                                <a href="<?= site_url('books'); ?>">Books</a>
+                                <a href="<?= site_url('books'); ?>">Books</a> <small>(searching, pagination, inline edit)</small>
                             </li>
                             <li>
-                                <a href="<?= site_url('tasks'); ?>">Tasks</a>
+                                <a href="<?= site_url('tasks'); ?>">Tasks</a> <small>(events)</small>
+                            </li>
+                            <li>
+                                <a href="<?= site_url('paragraphs'); ?>">Paragraphs</a> <small>(sorting, modal edit)</small>
                             </li>
                         </ul>
+
                         <p>
                             Note that the demos were prepared to show as many HTMX features as possible. And they do not always take the most optimal path to achieve the goal.
                         </p>
