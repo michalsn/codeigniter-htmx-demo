@@ -25,13 +25,26 @@ public $psr4 = [
 ## Database
 
 Before running the examples you have to migrate the database. Make sure you have set all the credentials to the database and then you can run the command:
-
-    php spark migrate --all
+```console
+php spark migrate --all
+```
 
 And preferably run the seeds:
 
-    php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedBooksTable
-    php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedParagraphsTable
+**For Windos:**
+```console
+php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedBooksTable
+```
+```console
+php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedParagraphsTable
+```
+**For Linux:**
+```console
+php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedBooksTable
+```
+```console
+php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedParagraphsTable
+```
 
 ## Running the demo
 
