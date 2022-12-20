@@ -60,7 +60,7 @@ class Paragraphs extends BaseController
             $this->response->setReswap('innerHTML')->setRetarget('#modal-fields');
             return view_fragment('Michalsn\CodeIgniterDemoHtmx\Views\paragraphs\edit', 'fields', [
                 'paragraph' => $paragraph, 'validation' => $validation,
-            ]).alert('danger', 'Form validation failed.');;
+            ]).alert('danger', 'Form validation failed.');
         }
 
         $model->update($paragraph->id, $post);
