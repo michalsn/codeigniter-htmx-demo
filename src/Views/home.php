@@ -34,19 +34,17 @@
                             <pre><code>php spark migrate --all</code></pre>
                         </div>
                         <h4>2. Load sample data</h4>
-                        <div class="hr-text hr-text-left">
-                            <span>If Windows</span>
+                        <div class="hr-text hr-text-left mb-3">
+                            <span>For Unix</span>
                         </div>
                         <div>
-                            <pre><code>php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedBooksTable</code></pre>
-                            <pre><code>php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedParagraphsTable</code></pre>
+                            <pre><code>php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedDemo</code></pre>
                         </div>
-                        <div class="hr-text hr-text-left">
-                            <span>If Linux</span>
+                        <div class="hr-text hr-text-left mb-3">
+                            <span>For Windows</span>
                         </div>
                         <div>
-                            <pre><code>php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedBooksTable</code></pre>
-                            <pre><code>php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedParagraphsTable</code></pre>
+                            <pre><code>php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedDemo</code></pre>
                         </div>
                     </div>
                 </div>

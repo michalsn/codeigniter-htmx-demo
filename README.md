@@ -31,19 +31,14 @@ php spark migrate --all
 
 And preferably run the seeds:
 
-**For Windos:**
+**For Unix:**
 ```console
-php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedBooksTable
+php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedDemo
 ```
+
+**For Windows:**
 ```console
-php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedParagraphsTable
-```
-**For Linux:**
-```console
-php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedBooksTable
-```
-```console
-php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedParagraphsTable
+php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedDemo
 ```
 
 ## Running the demo
