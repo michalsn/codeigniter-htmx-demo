@@ -44,13 +44,12 @@ class Books extends BaseController
 
         $model = model(BookModel::class);
 
-        if ($data['search'] !== '') {
-            $model
-                ->like('title', $data['search'], 'both')
-                ->orLike('author', $data['search'], 'both');
-        }
-
         $data['books'] = $model
+            ->when($data['search'] !== '', function ($query) {
+                return $query
+                    ->like('title', $data['search'], 'both')
+                    ->orLike('author', $data['search'], 'both');
+            })
             ->orderBy($data['sortColumn'], $data['sortDirection'])
             ->paginate((int) $data['limit'], 'default', (int) $data['page']);
 
