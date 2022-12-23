@@ -11,7 +11,7 @@
                         <span class="input-group-text">
                             Per page
                         </span>
-                        <?= form_dropdown('limit', $this->getPerPage(), set_value('limit', $limit), [
+                        <?= form_dropdown('limit', $perPage, set_value('limit', $limit), [
                                 'class' => 'form-select', 'hx-get' => site_url($this->baseURL()), 'hx-include' => 'closest .card-actions',
                             ]); ?>
                     </div>

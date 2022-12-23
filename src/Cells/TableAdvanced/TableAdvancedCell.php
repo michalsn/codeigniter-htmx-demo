@@ -65,7 +65,7 @@ class TableAdvancedCell extends Cell
         return $this->pager;
     }
 
-    protected function getPerPage(): array
+    protected function getPerPageProperty(): array
     {
         return $this->perPage;
     }
