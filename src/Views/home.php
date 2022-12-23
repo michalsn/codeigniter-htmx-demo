@@ -68,6 +68,9 @@
                             <li>
                                 <a href="<?= site_url('paragraphs'); ?>">Paragraphs</a> <small>(sorting, modal edit)</small>
                             </li>
+                            <li>
+                                <a href="<?= site_url('cells'); ?>">Controller Cells</a> <small>(widget like components)</small>
+                            </li>
                         </ul>
 
                         <p>

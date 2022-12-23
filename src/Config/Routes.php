@@ -32,3 +32,27 @@ $routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Contr
     $routes->post('reorder', 'Paragraphs::reorder');
 });
 
+$routes->group('cells', static function ($routes) {
+    $routes->get('/', static function () {
+        return view('Michalsn\CodeIgniterDemoHtmx\Views\cells\index');
+    });
+
+    $routes->group('counter', static function ($routes) {
+        $routes->get('increment', static function () {
+            return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell::increment', service('request')->getGet());
+        });
+
+        $routes->get('decrement', static function () {
+            return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell::decrement', service('request')->getGet());
+        });
+    });
+
+    $routes->get('table-simple', static function () {
+        return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\TableSimple\TableSimpleCell', service('request')->getGet());
+    });
+
+    $routes->get('table-advanced', static function () {
+        return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\TableAdvanced\TableAdvancedCell', service('request')->getGet());
+    });
+});
+

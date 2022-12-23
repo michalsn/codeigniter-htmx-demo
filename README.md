@@ -1,6 +1,6 @@
 # CodeIgniter HTMX Demo
 
-This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library.
+This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires CodeIgniter 4.3 or later version.
 
 ## Installation
 
