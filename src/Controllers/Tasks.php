@@ -84,7 +84,7 @@ class Tasks extends BaseController
         $this->response->triggerClientEvent('taskToggled');
         $this->response->triggerClientEvent('checkIfThereAreTasks', '', 'swap');
 
-        if ($this->request->getRawInput()['type'] ?? null) {
+        if ($this->request->getRawInputVar('type')) {
             return alert('success', 'Task updated.');
         }
 
@@ -106,7 +106,7 @@ class Tasks extends BaseController
             return alert('danger', 'There are no tasks yet.');
         }
 
-        $toggle = ($this->request->getRawInput()['toggle_all'] ?? null) === 'on' ? 'completed' : 'active';
+        $toggle = $this->request->getRawInputVar('toggle_all') === 'on' ? 'completed' : 'active';
 
         foreach ($tasks as $task) {
             $task->type = $toggle;
@@ -114,7 +114,7 @@ class Tasks extends BaseController
 
         $model->updateBatch($tasks, 'id');
 
-        $type = $this->request->getRawInput()['type'] ?? null;
+        $type = $this->request->getRawInputVar('type');
 
         return $this->index($type ?: null).alert('success', 'Tasks updated.');
     }
