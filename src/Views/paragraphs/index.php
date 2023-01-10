@@ -1,4 +1,4 @@
-<?php $this->extend('Michalsn\CodeIgniterDemoHtmx\Views\layout') ?>
+<?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
 
 <?php $this->section('content') ?>
 

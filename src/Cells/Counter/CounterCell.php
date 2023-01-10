@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Cells\Counter;
+namespace Michalsn\CodeIgniterHtmxDemo\Cells\Counter;
 
 use CodeIgniter\View\Cells\Cell;
 

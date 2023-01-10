@@ -1,4 +1,4 @@
-<?php $this->extend('Michalsn\CodeIgniterDemoHtmx\Views\layout') ?>
+<?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
 
 <?php $this->section('content') ?>
 
@@ -7,7 +7,7 @@
         <div class="row justify-content-md-center">
 
             <div class="col-sm-12 col-lg-8">
-                <?= $this->include('Michalsn\CodeIgniterDemoHtmx\Views\books\table'); ?>
+                <?= $this->include('Michalsn\CodeIgniterHtmxDemo\Views\books\table'); ?>
             </div>
 
         </div>

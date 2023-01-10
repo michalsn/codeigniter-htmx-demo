@@ -1,10 +1,10 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Cells\TableSimple;
+namespace Michalsn\CodeIgniterHtmxDemo\Cells\TableSimple;
 
 use CodeIgniter\View\Cells\Cell;
 use CodeIgniter\Pager\Pager;
-use Michalsn\CodeIgniterDemoHtmx\Models\BookModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
 
 class TableSimpleCell extends Cell
 {

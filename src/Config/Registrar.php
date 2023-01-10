@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Config;
+namespace Michalsn\CodeIgniterHtmxDemo\Config;
 
 class Registrar
 {
@@ -8,7 +8,7 @@ class Registrar
     {
         return [
             'templates' => [
-                'default_htmx_full' => 'Michalsn\CodeIgniterDemoHtmx\Views\Pager\default_htmx_full',
+                'default_htmx_full' => 'Michalsn\CodeIgniterHtmxDemo\Views\Pager\default_htmx_full',
             ],
         ];
     }

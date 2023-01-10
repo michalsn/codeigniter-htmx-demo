@@ -1,10 +1,10 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Cells\Table;
+namespace Michalsn\CodeIgniterHtmxDemo\Cells\Table;
 
 use CodeIgniter\View\Cells\Cell;
 use CodeIgniter\Pager\Pager;
-use Michalsn\CodeIgniterDemoHtmx\Models\BookModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
 use InvalidArgumentException;
 
 class TableAdvancedCell extends Cell

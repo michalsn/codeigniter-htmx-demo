@@ -1,12 +1,12 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Controllers;
+namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use InvalidArgumentException;
-use Michalsn\CodeIgniterDemoHtmx\Models\BookModel;
-use Michalsn\CodeIgniterDemoHtmx\TableHelper;
+use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
+use Michalsn\CodeIgniterHtmxDemo\TableHelper;
 
 class Books extends BaseController
 {
@@ -57,10 +57,10 @@ class Books extends BaseController
         $data['table'] = new TableHelper($this->baseURL, $data['sortColumn'], $data['sortDirection']);
 
         if ($this->request->isHtmx() && ! $this->request->isBoosted()) {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table', $data);
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table', $data);
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\books\index', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\books\index', $data);
     }
 
     /**
@@ -79,7 +79,7 @@ class Books extends BaseController
         $validation = service('validation');
 
         if ($this->request->getMethod() !== 'post') {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row_edit', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
                 'book' => $book, 'validation' => $validation,
             ]);
         }
@@ -92,7 +92,7 @@ class Books extends BaseController
         ]);
 
         if (! $validation->run($post)) {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row_edit', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
                 'book' => $book, 'validation' => $validation,
             ]).alert('danger', 'Form validation failed.');;
         }
@@ -101,7 +101,7 @@ class Books extends BaseController
 
         $book = (object) array_merge((array) $book, $post);
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row', [
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row', [
             'book' => $book,
         ]).alert('success', 'Book was updated.');
     }
@@ -118,7 +118,7 @@ class Books extends BaseController
         $validation = service('validation');
 
         if ($this->request->getMethod() !== 'post') {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row_add', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
                 'validation' => $validation,
             ]);
         }
@@ -131,13 +131,13 @@ class Books extends BaseController
         ]);
 
         if (! $validation->run($post)) {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row_add', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
                 'validation' => $validation,
             ]).alert('danger', 'Form validation failed.');
         }
 
         if ($id = $model->insert($post)) {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row', [
                 'book' => $model->find($id),
             ]).alert('success', 'The book was added successfully.');
         }
@@ -154,7 +154,7 @@ class Books extends BaseController
             throw new PageNotFoundException('Incorrect book ID.');
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row', [
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row', [
             'book' => $book, 'validation' => service('validation'),
         ]);
     }

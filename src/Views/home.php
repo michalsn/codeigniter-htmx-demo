@@ -1,4 +1,4 @@
-<?php $this->extend('Michalsn\CodeIgniterDemoHtmx\Views\layout') ?>
+<?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
 
 <?php $this->section('content') ?>
 
@@ -38,13 +38,13 @@
                             <span>For Unix</span>
                         </div>
                         <div>
-                            <pre><code>php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedDemo</code></pre>
+                            <pre><code>php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedDemo</code></pre>
                         </div>
                         <div class="hr-text hr-text-left mb-3">
                             <span>For Windows</span>
                         </div>
                         <div>
-                            <pre><code>php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedDemo</code></pre>
+                            <pre><code>php spark db:seed Michalsn\CodeIgniterHtmxDemo\Database\Seeds\SeedDemo</code></pre>
                         </div>
                     </div>
                 </div>

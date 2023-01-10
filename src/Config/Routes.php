@@ -1,12 +1,12 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Config;
+namespace Michalsn\CodeIgniterHtmxDemo\Config;
 
 $routes->get('demo', static function () {
-    return view('Michalsn\CodeIgniterDemoHtmx\Views\home');
+    return view('Michalsn\CodeIgniterHtmxDemo\Views\home');
 });
 
-$routes->group('books', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
+$routes->group('books', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
     $routes->get('/', 'Books::index');
     $routes->get('table', 'Books::table');
     $routes->get('show/(:num)', 'Books::show/$1');
@@ -15,7 +15,7 @@ $routes->group('books', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controller
     $routes->match(['get', 'post'], 'add', 'Books::add');
 });
 
-$routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
+$routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
     $routes->get('/', 'Tasks::index');
     $routes->get('(active|completed)', 'Tasks::index/$1');
     $routes->post('/', 'Tasks::add');
@@ -26,7 +26,7 @@ $routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controller
     $routes->get('summary', 'Tasks::summary');
 });
 
-$routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Controllers'], static function ($routes) {
+$routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
     $routes->get('/', 'Paragraphs::index');
     $routes->match(['get', 'post'], 'edit/(:num)', 'Paragraphs::edit/$1');
     $routes->post('reorder', 'Paragraphs::reorder');
@@ -34,25 +34,25 @@ $routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterDemoHtmx\Contr
 
 $routes->group('cells', static function ($routes) {
     $routes->get('/', static function () {
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\cells\index');
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\cells\index');
     });
 
     $routes->group('counter', static function ($routes) {
         $routes->get('increment', static function () {
-            return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell::increment', service('request')->getGet());
+            return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\Counter\CounterCell::increment', service('request')->getGet());
         });
 
         $routes->get('decrement', static function () {
-            return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell::decrement', service('request')->getGet());
+            return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\Counter\CounterCell::decrement', service('request')->getGet());
         });
     });
 
     $routes->get('table-simple', static function () {
-        return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\TableSimple\TableSimpleCell', service('request')->getGet());
+        return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\TableSimple\TableSimpleCell', service('request')->getGet());
     });
 
     $routes->get('table-advanced', static function () {
-        return view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\TableAdvanced\TableAdvancedCell', service('request')->getGet());
+        return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\TableAdvanced\TableAdvancedCell', service('request')->getGet());
     });
 });
 

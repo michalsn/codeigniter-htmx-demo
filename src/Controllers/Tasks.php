@@ -1,9 +1,9 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Controllers;
+namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
-use Michalsn\CodeIgniterDemoHtmx\Models\TaskModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\TaskModel;
 
 class Tasks extends BaseController
 {
@@ -23,10 +23,10 @@ class Tasks extends BaseController
         ];
 
         if ($this->request->isHtmx() && ! $this->request->isBoosted()) {
-            return view_fragment('Michalsn\CodeIgniterDemoHtmx\Views\tasks\index', 'tasks', $data);
+            return view_fragment('Michalsn\CodeIgniterHtmxDemo\Views\tasks\index', 'tasks', $data);
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\index', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\index', $data);
     }
 
     /**
@@ -54,7 +54,7 @@ class Tasks extends BaseController
 
             $this->response->triggerClientEvent('taskAdded');
 
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\task', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task', [
                 'task' => $model->find($id),
             ]).alert('success', 'New task was added successfully.');
         }
@@ -88,7 +88,7 @@ class Tasks extends BaseController
             return alert('success', 'Task updated.');
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\task', [
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task', [
             'task' => $task,
         ]).alert('success', 'Task updated.');
     }
@@ -165,6 +165,6 @@ class Tasks extends BaseController
             'countCompleted' => $model->countByType('completed'),
         ];
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\tasks_summary', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\tasks_summary', $data);
     }
 }
