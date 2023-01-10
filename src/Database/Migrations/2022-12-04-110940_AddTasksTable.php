@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Database\Migrations;
+namespace Michalsn\CodeIgniterHtmxDemo\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 

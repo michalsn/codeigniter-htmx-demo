@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx;
+namespace Michalsn\CodeIgniterHtmxDemo;
 
 use InvalidArgumentException;
 

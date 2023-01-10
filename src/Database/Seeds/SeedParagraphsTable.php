@@ -1,10 +1,10 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Database\Seeds;
+namespace Michalsn\CodeIgniterHtmxDemo\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\Test\Fabricator;
-use Michalsn\CodeIgniterDemoHtmx\Models\ParagraphModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\ParagraphModel;
 
 class SeedParagraphsTable extends Seeder
 {

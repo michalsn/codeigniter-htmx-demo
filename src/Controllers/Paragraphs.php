@@ -1,10 +1,10 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Controllers;
+namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
-use Michalsn\CodeIgniterDemoHtmx\Models\ParagraphModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\ParagraphModel;
 use ReflectionException;
 
 class Paragraphs extends BaseController
@@ -22,10 +22,10 @@ class Paragraphs extends BaseController
         ];
 
         if ($this->request->isHtmx() && ! $this->request->isBoosted()) {
-            return view_fragment('Michalsn\CodeIgniterDemoHtmx\Views\paragraphs\index', 'paragraphs', $data);
+            return view_fragment('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\index', 'paragraphs', $data);
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\paragraphs\index', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\index', $data);
     }
 
     /**
@@ -44,7 +44,7 @@ class Paragraphs extends BaseController
         $validation = service('validation');
 
         if ($this->request->getMethod() !== 'post') {
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\paragraphs\edit', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\edit', [
                 'paragraph' => $paragraph, 'validation' => $validation,
             ]);
         }
@@ -58,7 +58,7 @@ class Paragraphs extends BaseController
 
         if (! $validation->run($post)) {
             $this->response->setReswap('innerHTML')->setRetarget('#modal-fields');
-            return view_fragment('Michalsn\CodeIgniterDemoHtmx\Views\paragraphs\edit', 'fields', [
+            return view_fragment('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\edit', 'fields', [
                 'paragraph' => $paragraph, 'validation' => $validation,
             ]).alert('danger', 'Form validation failed.');
         }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Controllers;
+namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
-use Michalsn\CodeIgniterDemoHtmx\Models\TaskModel;
+use Michalsn\CodeIgniterHtmxDemo\Models\TaskModel;
 
 class Tasks extends BaseController
 {
@@ -23,10 +23,10 @@ class Tasks extends BaseController
         ];
 
         if ($this->request->isHtmx() && ! $this->request->isBoosted()) {
-            return view_fragment('Michalsn\CodeIgniterDemoHtmx\Views\tasks\index', 'tasks', $data);
+            return view_fragment('Michalsn\CodeIgniterHtmxDemo\Views\tasks\index', 'tasks', $data);
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\index', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\index', $data);
     }
 
     /**
@@ -54,7 +54,7 @@ class Tasks extends BaseController
 
             $this->response->triggerClientEvent('taskAdded');
 
-            return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\task', [
+            return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task', [
                 'task' => $model->find($id),
             ]).alert('success', 'New task was added successfully.');
         }
@@ -84,11 +84,11 @@ class Tasks extends BaseController
         $this->response->triggerClientEvent('taskToggled');
         $this->response->triggerClientEvent('checkIfThereAreTasks', '', 'swap');
 
-        if ($this->request->getRawInput()['type'] ?? null) {
+        if ($this->request->getRawInputVar('type')) {
             return alert('success', 'Task updated.');
         }
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\task', [
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task', [
             'task' => $task,
         ]).alert('success', 'Task updated.');
     }
@@ -106,7 +106,7 @@ class Tasks extends BaseController
             return alert('danger', 'There are no tasks yet.');
         }
 
-        $toggle = ($this->request->getRawInput()['toggle_all'] ?? null) === 'on' ? 'completed' : 'active';
+        $toggle = $this->request->getRawInputVar('toggle_all') === 'on' ? 'completed' : 'active';
 
         foreach ($tasks as $task) {
             $task->type = $toggle;
@@ -114,7 +114,7 @@ class Tasks extends BaseController
 
         $model->updateBatch($tasks, 'id');
 
-        $type = $this->request->getRawInput()['type'] ?? null;
+        $type = $this->request->getRawInputVar('type');
 
         return $this->index($type ?: null).alert('success', 'Tasks updated.');
     }
@@ -165,6 +165,6 @@ class Tasks extends BaseController
             'countCompleted' => $model->countByType('completed'),
         ];
 
-        return view('Michalsn\CodeIgniterDemoHtmx\Views\tasks\tasks_summary', $data);
+        return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\tasks_summary', $data);
     }
 }

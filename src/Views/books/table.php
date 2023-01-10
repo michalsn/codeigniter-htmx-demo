@@ -55,7 +55,7 @@
             </thead>
             <tbody id="books-table-rows">
                 <?php foreach ($books as $book): ?>
-                    <?= $this->setVar('book', $book)->include('Michalsn\CodeIgniterDemoHtmx\Views\books\table_row'); ?>
+                    <?= $this->setVar('book', $book)->include('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row'); ?>
                 <?php endforeach; ?>
             </tbody>
         </table>

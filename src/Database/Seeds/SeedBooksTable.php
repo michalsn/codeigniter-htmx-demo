@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterDemoHtmx\Database\Seeds;
+namespace Michalsn\CodeIgniterHtmxDemo\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 

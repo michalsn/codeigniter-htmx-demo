@@ -1,12 +1,21 @@
 # CodeIgniter HTMX Demo
 
-This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library.
+This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires CodeIgniter 4.3 or later version.
+
+#### Available demos:
+
+- **Books** - searching, pagination, inline edit
+- **Tasks** - events
+- **Paragraphs** - sorting, modal edit
+- **Controller Cells** - widget like components
+
+Demos requires CodeIgniter `4.3` or higher.
 
 ## Installation
 
 To easily play with the code, you're supposed to download the package and install it manually.
 
-Download this project and place it in the desired folder. The example will assume that it will be `app/ThirdParty/htmx-demo`. Then enable it by editing the `app/Config/Autoload.php` file and adding the `Michalsn\CodeIgniterDemoHtmx` namespace to the `$psr4` array, like in the below example:
+Download this project and place it in the desired folder. The example will assume that it will be `app/ThirdParty/htmx-demo`. Then enable it by editing the `app/Config/Autoload.php` file and adding the `Michalsn\CodeIgniterHtmxDemo` namespace to the `$psr4` array, like in the below example:
 
 ```php
 <?php
@@ -16,7 +25,7 @@ Download this project and place it in the desired folder. The example will assum
 public $psr4 = [
     APP_NAMESPACE => APPPATH, // For custom app namespace
     'Config'      => APPPATH . 'Config',
-    'Michalsn\CodeIgniterDemoHtmx' => APPPATH . 'ThirdParty/htmx-demo/src',
+    'Michalsn\CodeIgniterHtmxDemo' => APPPATH . 'ThirdParty/htmx-demo/src',
 ];
 
 ...
@@ -33,12 +42,12 @@ And preferably run the seeds:
 
 **For Unix:**
 ```console
-php spark db:seed Michalsn\\CodeIgniterDemoHtmx\\Database\\Seeds\\SeedDemo
+php spark db:seed Michalsn\\CodeIgniterHtmxDemo\\Database\\Seeds\\SeedDemo
 ```
 
 **For Windows:**
 ```console
-php spark db:seed Michalsn\CodeIgniterDemoHtmx\Database\Seeds\SeedDemo
+php spark db:seed Michalsn\CodeIgniterHtmxDemo\Database\Seeds\SeedDemo
 ```
 
 ## Running the demo
