@@ -2,6 +2,15 @@
 
 This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires CodeIgniter 4.3 or later version.
 
+#### Available demos:
+
+- **Books** - searching, pagination, inline edit
+- **Tasks** - events
+- **Paragraphs** - sorting, modal edit
+- **Controller Cells** - widget like components
+
+Demos requires CodeIgniter `4.3` or higher.
+
 ## Installation
 
 To easily play with the code, you're supposed to download the package and install it manually.
