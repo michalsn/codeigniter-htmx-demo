@@ -45,7 +45,7 @@ class Books extends BaseController
         $model = model(BookModel::class);
 
         $data['books'] = $model
-            ->when($data['search'] !== '', function ($query) {
+            ->when($data['search'] !== '', function ($query) use ($data) {
                 return $query
                     ->like('title', $data['search'], 'both')
                     ->orLike('author', $data['search'], 'both');
