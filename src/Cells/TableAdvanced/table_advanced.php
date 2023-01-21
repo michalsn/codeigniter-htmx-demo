@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-7">
                     <div class="input-icon">
-                        <input type="text" name="search" class="form-control" placeholder="Search..." value="<?= set_value('search', $search); ?>" 
+                        <input type="text" name="search" class="form-control" placeholder="Search..." value="<?= set_value('search', $search); ?>"
                                 hx-get="<?= site_url($this->baseURL()); ?>" hx-include="closest .card-actions" hx-trigger="keyup changed delay:500ms">
                         <span class="input-icon-addon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
@@ -41,9 +41,9 @@
         <table class="table card-table table-vcenter">
             <thead>
                 <tr hx-include="closest .card" hx-swap="morph:outerHTML" hx-target="closest .card">
-                    <th><?= anchor($this->sortByURL('id'), 'ID', ['hx-get' => $this->sortByURL('id')]); ?> <?= $this->getSortIndicator('id'); ?></th>
-                    <th><?= anchor($this->sortByURL('title'), 'Title', ['hx-get' => $this->sortByURL('title')]); ?> <?= $this->getSortIndicator('title'); ?></th>
-                    <th><?= anchor($this->sortByURL('author'), 'Author', ['hx-get' => $this->sortByURL('author')]); ?> <?= $this->getSortIndicator('author'); ?></th>
+                    <th><?= anchor($this->sortByURL('id'), 'ID', ['hx-get' => site_url($this->sortByURL('id'))]); ?> <?= $this->getSortIndicator('id'); ?></th>
+                    <th><?= anchor($this->sortByURL('title'), 'Title', ['hx-get' => site_url($this->sortByURL('title'))]); ?> <?= $this->getSortIndicator('title'); ?></th>
+                    <th><?= anchor($this->sortByURL('author'), 'Author', ['hx-get' => site_url($this->sortByURL('author'))]); ?> <?= $this->getSortIndicator('author'); ?></th>
                 </tr>
             </thead>
             <tbody>
