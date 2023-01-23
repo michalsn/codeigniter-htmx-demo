@@ -47,9 +47,9 @@
         <table class="table card-table table-vcenter">
             <thead>
                 <tr hx-include="closest .card" hx-swap="morph:outerHTML" hx-target="closest .card">
-                    <th class="w-1"><?= anchor($table->sortByURL('id'), 'ID', ['hx-get' => $table->sortByURL('id')]); ?> <?= $table->getSortIndicator('id'); ?></th>
-                    <th class="col-4"><?= anchor($table->sortByURL('title'), 'Title', ['hx-get' => $table->sortByURL('title')]); ?> <?= $table->getSortIndicator('title'); ?></th>
-                    <th class="col-4"><?= anchor($table->sortByURL('author'), 'Author', ['hx-get' => $table->sortByURL('author')]); ?> <?= $table->getSortIndicator('author'); ?></th>
+                    <th class="w-1"><?= anchor($table->sortByURL('id'), 'ID', ['hx-get' => site_url($table->sortByURL('id'))]); ?> <?= $table->getSortIndicator('id'); ?></th>
+                    <th class="col-4"><?= anchor($table->sortByURL('title'), 'Title', ['hx-get' => site_url($table->sortByURL('title'))]); ?> <?= $table->getSortIndicator('title'); ?></th>
+                    <th class="col-4"><?= anchor($table->sortByURL('author'), 'Author', ['hx-get' => site_url($table->sortByURL('author'))]); ?> <?= $table->getSortIndicator('author'); ?></th>
                     <th class="col"></th>
                 </tr>
             </thead>
