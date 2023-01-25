@@ -69,7 +69,7 @@
                                 <a href="<?= site_url('paragraphs'); ?>">Paragraphs</a> <small>(sorting, modal edit)</small>
                             </li>
                             <li>
-                                <a href="<?= site_url('cells'); ?>">Controller Cells</a> <small>(widget like components)</small>
+                                <a href="<?= site_url('cells'); ?>">Controlled Cells</a> <small>(widget like components, signed-urls)</small>
                             </li>
                         </ul>
 

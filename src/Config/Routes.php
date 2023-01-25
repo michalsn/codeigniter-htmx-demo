@@ -47,6 +47,16 @@ $routes->group('cells', static function ($routes) {
         });
     });
 
+    $routes->group('counter-signed', static function ($routes) {
+        $routes->get('increment', static function () {
+            return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\CounterSigned\CounterSignedCell::increment', service('request')->getGet());
+        });
+
+        $routes->get('decrement', static function () {
+            return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\CounterSigned\CounterSignedCell::decrement', service('request')->getGet());
+        });
+    });
+
     $routes->get('table-simple', static function () {
         return view_cell('Michalsn\CodeIgniterHtmxDemo\Cells\TableSimple\TableSimpleCell', service('request')->getGet());
     });

@@ -7,7 +7,7 @@ This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-ht
 - **Books** - searching, pagination, inline edit
 - **Tasks** - events
 - **Paragraphs** - sorting, modal edit
-- **Controller Cells** - widget like components
+- **Controlled Cells** - widget like components, signed-urls (the last one requires https://github.com/michalsn/codeigniter-signed-url)
 
 Demos requires CodeIgniter `4.3` or higher.
 
