@@ -1,6 +1,9 @@
 # CodeIgniter HTMX Demo
 
-This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires CodeIgniter 4.3 or later version.
+This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires:
+
+- CodeIgniter HTMX library installed via composer or manually,
+- CodeIgniter 4.3 or later version.
 
 #### Available demos:
 
@@ -8,8 +11,6 @@ This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-ht
 - **Tasks** - events
 - **Paragraphs** - sorting, modal edit
 - **Controlled Cells** - widget like components, signed-urls (the last one requires https://github.com/michalsn/codeigniter-signed-url)
-
-Demos requires CodeIgniter `4.3` or higher.
 
 ## Installation
 
