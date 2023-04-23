@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterHtmxDemo\Cells\Counter;
+namespace Michalsn\CodeIgniterHtmxDemo\Cells\CounterSigned;
 
 use CodeIgniter\View\Cells\Cell;
 use Michalsn\CodeIgniterSignedUrl\Exceptions\SignedUrlException;

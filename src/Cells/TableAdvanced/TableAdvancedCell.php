@@ -1,6 +1,6 @@
 <?php
 
-namespace Michalsn\CodeIgniterHtmxDemo\Cells\Table;
+namespace Michalsn\CodeIgniterHtmxDemo\Cells\TableAdvanced;
 
 use CodeIgniter\View\Cells\Cell;
 use CodeIgniter\Pager\Pager;
