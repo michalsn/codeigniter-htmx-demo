@@ -5,6 +5,8 @@ This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-ht
 - CodeIgniter HTMX library installed via composer or manually,
 - CodeIgniter 4.3 or later version.
 
+![CodeIgniter HTMX Demo](demo.gif)
+
 #### Available demos:
 
 - **Books** - searching, pagination, inline edit
