@@ -117,7 +117,7 @@
 
 <!-- JS files -->
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-<script src="https://unpkg.com/htmx.org@1.8.4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/htmx.org@1.9.1" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/hyperscript.org@0.9.7" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
