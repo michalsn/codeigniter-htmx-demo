@@ -1,5 +1,9 @@
 <?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
 
+<?php $this->section('title') ?>
+    CodeIgniter HTMX Demo - Dashboard
+<?php $this->endSection() ?>
+
 <?php $this->section('content') ?>
 
 <div class="page-header">

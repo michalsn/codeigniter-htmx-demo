@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <?= csrf_meta(); ?>
 
-    <title>CodeIgniter HTMX Demo</title>
+    <title><?= $this->renderSection('title') ?></title>
 
     <!-- CSS files -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
 
 </head>
-<body hx-ext="morph">
+<body hx-ext="morph" hx-ext="head-support">
 <div class="page">
     <header class="navbar navbar-expand-md navbar-dark d-print-none">
         <div class="container-fluid">
@@ -118,6 +118,7 @@
 <!-- JS files -->
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
 <script src="https://unpkg.com/htmx.org@1.9.1" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
 <script src="https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/hyperscript.org@0.9.7" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>

@@ -1,5 +1,9 @@
 <?php $this->extend('Michalsn\CodeIgniterHtmxDemo\Views\layout') ?>
 
+<?php $this->section('title') ?>
+    CodeIgniter HTMX Demo - Paragraphs
+<?php $this->endSection() ?>
+
 <?php $this->section('content') ?>
 
     <div class="page-body">
