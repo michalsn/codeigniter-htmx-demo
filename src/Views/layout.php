@@ -92,7 +92,7 @@
     </script>
 
 </head>
-<body hx-ext="morph" hx-ext="head-support">
+<body hx-ext="morph">
 <div class="page">
     <header class="navbar navbar-expand-md navbar-dark d-print-none">
         <div class="container-fluid">
