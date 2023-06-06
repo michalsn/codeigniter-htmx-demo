@@ -23,6 +23,74 @@
         }
     </style>
 
+    <!-- JS files -->
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.1" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.7" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
+    <script>
+        // general config
+        htmx.config.useTemplateFragments = true;
+
+        htmx.onLoad(function(content) {
+
+            if (document.getElementById('new-task')) {
+                // tasks
+                htmx.on('#new-task', 'htmx:afterRequest', function (ev) {
+                    ev.detail.elt.value = '';
+
+                    const event = new Event('checkIfThereAreTasks');
+                    document.body.dispatchEvent(event);
+                });
+
+                // show empty tasks panel
+                document.body.addEventListener('checkIfThereAreTasks', function (ev) {
+                    console.log('checkIfThereAreTasks')
+                    const itemListEmpty = document.getElementById('task-list-empty');
+                    const itemList = document.getElementById('task-list');
+                    if (itemList.childElementCount > 0) {
+                        itemListEmpty.classList.add('d-none');
+                        itemList.classList.remove('d-none');
+                    } else {
+                        itemListEmpty.classList.remove('d-none');
+                        itemList.classList.add('d-none');
+                    }
+                })
+            }
+
+            // paragraphs
+            const sortables = content.querySelectorAll('.sortable');
+            if (sortables.length) {
+                for (let i = 0; i < sortables.length; i++) {
+                    const sortable = sortables[i];
+                    new Sortable(sortable, {
+                        handle: '.cursor-move',
+                        animation: 150,
+                        ghostClass: 'bg-yellow-lt'
+                    });
+                }
+            }
+
+            document.body.addEventListener('closeModal', function (ev) {
+                closeModal();
+            });
+        });
+
+        function closeModal() {
+            const container = document.getElementById('modals-container');
+            const backdrop = document.getElementById('modal-backdrop');
+            const modal = document.getElementById('modal');
+
+            modal.classList.remove('show');
+            backdrop.classList.remove('show');
+
+            setTimeout(function() {
+                container.innerHTML = '';
+            }, 200);
+        }
+    </script>
+
 </head>
 <body hx-ext="morph" hx-ext="head-support">
 <div class="page">
@@ -126,75 +194,6 @@
 <div id="alerts-wrapper" class="position-fixed z-index-50 bottom-0 end-0 p-3">
 
 </div>
-
-<!-- JS files -->
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-<script src="https://unpkg.com/htmx.org@1.9.1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
-<script src="https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/hyperscript.org@0.9.7" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
-<script>
-    // general config
-    htmx.config.useTemplateFragments = true;
-
-    htmx.onLoad(function(content) {
-
-        if (document.getElementById('new-task')) {
-            // tasks
-            htmx.on('#new-task', 'htmx:afterRequest', function (ev) {
-                ev.detail.elt.value = '';
-
-                const event = new Event('checkIfThereAreTasks');
-                document.body.dispatchEvent(event);
-            });
-
-            // show empty tasks panel
-            document.body.addEventListener('checkIfThereAreTasks', function (ev) {
-                console.log('checkIfThereAreTasks')
-                const itemListEmpty = document.getElementById('task-list-empty');
-                const itemList = document.getElementById('task-list');
-                if (itemList.childElementCount > 0) {
-                    itemListEmpty.classList.add('d-none');
-                    itemList.classList.remove('d-none');
-                } else {
-                    itemListEmpty.classList.remove('d-none');
-                    itemList.classList.add('d-none');
-                }
-            })
-        }
-
-        // paragraphs
-        const sortables = content.querySelectorAll('.sortable');
-        if (sortables.length) {
-            for (let i = 0; i < sortables.length; i++) {
-                const sortable = sortables[i];
-                new Sortable(sortable, {
-                    handle: '.cursor-move',
-                    animation: 150,
-                    ghostClass: 'bg-yellow-lt'
-                });
-            }
-        }
-
-        document.body.addEventListener('closeModal', function (ev) {
-            closeModal();
-        });
-    });
-
-    function closeModal() {
-        const container = document.getElementById('modals-container');
-        const backdrop = document.getElementById('modal-backdrop');
-        const modal = document.getElementById('modal');
-
-        modal.classList.remove('show');
-        backdrop.classList.remove('show');
-
-        setTimeout(function() {
-            container.innerHTML = '';
-        }, 200);
-    }
-</script>
 
 </body>
 </html>
