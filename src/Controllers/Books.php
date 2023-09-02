@@ -94,7 +94,7 @@ class Books extends BaseController
         if (! $validation->run($post)) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
                 'book' => $book, 'validation' => $validation,
-            ]).alert('danger', 'Form validation failed.');;
+            ]).alert('danger', 'Form validation failed.');
         }
 
         $model->update($book->id, $post);
