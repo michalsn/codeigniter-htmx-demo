@@ -46,7 +46,6 @@
 
                 // show empty tasks panel
                 document.body.addEventListener('checkIfThereAreTasks', function (ev) {
-                    console.log('checkIfThereAreTasks')
                     const itemListEmpty = document.getElementById('task-list-empty');
                     const itemList = document.getElementById('task-list');
                     if (itemList.childElementCount > 0) {
