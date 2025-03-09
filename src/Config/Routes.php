@@ -11,8 +11,8 @@ $routes->group('books', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controller
     $routes->get('table', 'Books::table');
     $routes->get('show/(:num)', 'Books::show/$1');
     $routes->delete('delete/(:num)', 'Books::delete/$1');
-    $routes->match(['get', 'post'], 'edit/(:num)', 'Books::edit/$1');
-    $routes->match(['get', 'post'], 'add', 'Books::add');
+    $routes->match(['GET', 'POST'], 'edit/(:num)', 'Books::edit/$1');
+    $routes->match(['GET', 'POST'], 'add', 'Books::add');
 });
 
 $routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
@@ -28,7 +28,7 @@ $routes->group('tasks', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controller
 
 $routes->group('paragraphs', ['namespace' => 'Michalsn\CodeIgniterHtmxDemo\Controllers'], static function ($routes) {
     $routes->get('/', 'Paragraphs::index');
-    $routes->match(['get', 'post'], 'edit/(:num)', 'Paragraphs::edit/$1');
+    $routes->match(['GET', 'POST'], 'edit/(:num)', 'Paragraphs::edit/$1');
     $routes->post('reorder', 'Paragraphs::reorder');
 });
 
