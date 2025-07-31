@@ -9,8 +9,8 @@ use InvalidArgumentException;
 
 class TableAdvancedCell extends Cell
 {
-    public int $limit = 2;
-    public int $page = 1;
+    public string $limit = '2';
+    public string $page = '1';
     public string $search = '';
     public string $sortColumn = 'id';
     public string $sortDirection = 'asc';
@@ -50,7 +50,7 @@ class TableAdvancedCell extends Cell
                     ->orLike('author', $this->search, 'both');
             })
             ->orderBy($this->sortColumn, $this->sortDirection)
-            ->paginate($this->limit, 'default', $this->page);
+            ->paginate((int) $this->limit, 'default', (int) $this->page);
 
         $this->pager = $model->pager->setPath($this->baseURL);
     }

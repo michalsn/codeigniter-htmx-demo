@@ -10,7 +10,7 @@ class Tasks extends BaseController
     /**
      * Display tasks list.
      */
-    public function index(string $type = null): string
+    public function index(?string $type = null): string
     {
         helper('form');
 

@@ -8,7 +8,7 @@ use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
 
 class TableSimpleCell extends Cell
 {
-    public int $page = 1;
+    public string $page = '1';
 
     protected string $baseURL = 'cells/table-simple';
 
@@ -22,7 +22,7 @@ class TableSimpleCell extends Cell
         $model = model(BookModel::class);     
 
         $this->books = $model
-            ->paginate(2, 'default', $this->page);
+            ->paginate(2, 'default', (int) $this->page);
 
         $this->pager = $model->pager->setPath($this->baseURL);
     }

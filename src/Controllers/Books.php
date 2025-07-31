@@ -4,6 +4,7 @@ namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\HTTP\Method;
 use InvalidArgumentException;
 use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
 use Michalsn\CodeIgniterHtmxDemo\TableHelper;
@@ -78,7 +79,7 @@ class Books extends BaseController
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
                 'book' => $book, 'validation' => $validation,
             ]);
@@ -117,7 +118,7 @@ class Books extends BaseController
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
                 'validation' => $validation,
             ]);
