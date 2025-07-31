@@ -1,9 +1,9 @@
 <?php
-
 namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\HTTP\Method;
 use Michalsn\CodeIgniterHtmxDemo\Models\ParagraphModel;
 use ReflectionException;
 
@@ -17,8 +17,9 @@ class Paragraphs extends BaseController
         helper('form');
 
         $model = model(ParagraphModel::class);
-        $data = [
-            'paragraphs' => $model->orderBy('sort', 'asc')->findAll(),
+        $data  = [
+            'paragraphs' => $model->orderBy('sort', 'asc')
+            ->findAll(),
         ];
 
         if ($this->request->isHtmx() && ! $this->request->isBoosted()) {
@@ -39,27 +40,32 @@ class Paragraphs extends BaseController
             throw new PageNotFoundException('Incorrect paragraph id.');
         }
 
-        helper(['form', 'alert']);
+        helper([ 'form', 'alert' ]);
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\edit', [
-                'paragraph' => $paragraph, 'validation' => $validation,
+                'paragraph'  => $paragraph,
+                'validation' => $validation,
             ]);
         }
 
-        $post = $this->request->getPost(['title', 'body']);
+        $post = $this->request->getPost([ 'title', 'body' ]);
 
         $validation->setRules([
-            'title' => ['required', 'string', 'min_length[5]', 'max_length[64]'],
-            'body'  => ['required', 'string', 'min_length[20]', 'max_length[255]'],
-        ]);
+            'title' => [ 'required', 'string', 'min_length[5]', 'max_length[64]' ],
+            'body'  => [ 'required', 'string', 'min_length[20]', 'max_length[255]' ],
+        ])
+        ;
 
         if (! $validation->run($post)) {
-            $this->response->setReswap('innerHTML')->setRetarget('#modal-fields');
+            $this->response->setReswap('innerHTML')
+                ->setRetarget('#modal-fields')
+            ;
             return view_fragment('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\edit', 'fields', [
-                'paragraph' => $paragraph, 'validation' => $validation,
+                'paragraph'  => $paragraph,
+                'validation' => $validation,
             ]).alert('danger', 'Form validation failed.');
         }
 
@@ -87,7 +93,9 @@ class Paragraphs extends BaseController
 
         $model = model(ParagraphModel::class);
 
-        $count = $model->whereIn('id', $ids)->countAllResults();
+        $count = $model->whereIn('id', $ids)
+            ->countAllResults()
+        ;
 
         if ($count !== count($ids)) {
             return alert('danger', 'Incorrect number of paragraphs.');

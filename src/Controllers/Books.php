@@ -1,9 +1,9 @@
 <?php
-
 namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\HTTP\Method;
 use InvalidArgumentException;
 use Michalsn\CodeIgniterHtmxDemo\Models\BookModel;
 use Michalsn\CodeIgniterHtmxDemo\TableHelper;
@@ -29,11 +29,11 @@ class Books extends BaseController
         ];
 
         $rules = [
-            'limit'         => ['is_natural_no_zero', 'less_than_equal_to[10]'],
-            'page'          => ['is_natural', 'greater_than_equal_to[1]'],
-            'search'        => ['string'],
-            'sortColumn'    => ['in_list[id,title,author]'],
-            'sortDirection' => ['in_list[asc,desc]'],
+            'limit'         => [ 'is_natural_no_zero', 'less_than_equal_to[10]' ],
+            'page'          => [ 'is_natural', 'greater_than_equal_to[1]' ],
+            'search'        => [ 'string' ],
+            'sortColumn'    => [ 'in_list[id,title,author]' ],
+            'sortDirection' => [ 'in_list[asc,desc]' ],
         ];
 
         if (! $this->validateData($data, $rules)) {
@@ -48,10 +48,12 @@ class Books extends BaseController
             ->when($data['search'] !== '', function ($query) use ($data) {
                 return $query
                     ->like('title', $data['search'], 'both')
-                    ->orLike('author', $data['search'], 'both');
+                    ->orLike('author', $data['search'], 'both')
+                ;
             })
             ->orderBy($data['sortColumn'], $data['sortDirection'])
-            ->paginate((int) $data['limit'], 'default', (int) $data['page']);
+            ->paginate((int) $data['limit'], 'default', (int) $data['page'])
+        ;
 
         $data['pager'] = $model->pager->setPath($this->baseURL);
         $data['table'] = new TableHelper($this->baseURL, $data['sortColumn'], $data['sortDirection']);
@@ -74,26 +76,29 @@ class Books extends BaseController
             throw new PageNotFoundException('Incorrect book id.');
         }
 
-        helper(['form', 'alert']);
+        helper([ 'form', 'alert' ]);
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
-                'book' => $book, 'validation' => $validation,
+                'book'       => $book,
+                'validation' => $validation,
             ]);
         }
 
-        $post = $this->request->getPost(['title', 'author']);
+        $post = $this->request->getPost([ 'title', 'author' ]);
 
         $validation->setRules([
-            'title'  => ['required', 'string', 'min_length[2]', 'max_length[100]'],
-            'author' => ['required', 'string', 'min_length[5]', 'max_length[100]'],
-        ]);
+            'title'  => [ 'required', 'string', 'min_length[2]', 'max_length[100]' ],
+            'author' => [ 'required', 'string', 'min_length[5]', 'max_length[100]' ],
+        ])
+        ;
 
         if (! $validation->run($post)) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
-                'book' => $book, 'validation' => $validation,
+                'book'       => $book,
+                'validation' => $validation,
             ]).alert('danger', 'Form validation failed.');
         }
 
@@ -113,22 +118,23 @@ class Books extends BaseController
     {
         $model = model(BookModel::class);
 
-        helper(['form', 'alert']);
+        helper([ 'form', 'alert' ]);
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
                 'validation' => $validation,
             ]);
         }
 
-        $post = $this->request->getPost(['title', 'author']);
+        $post = $this->request->getPost([ 'title', 'author' ]);
 
         $validation->setRules([
-            'title'  => ['required', 'string', 'min_length[2]', 'max_length[100]'],
-            'author' => ['required', 'string', 'min_length[5]', 'max_length[100]'],
-        ]);
+            'title'  => [ 'required', 'string', 'min_length[2]', 'max_length[100]' ],
+            'author' => [ 'required', 'string', 'min_length[5]', 'max_length[100]' ],
+        ])
+        ;
 
         if (! $validation->run($post)) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
@@ -155,7 +161,8 @@ class Books extends BaseController
         }
 
         return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row', [
-            'book' => $book, 'validation' => service('validation'),
+            'book'       => $book,
+            'validation' => service('validation'),
         ]);
     }
 
