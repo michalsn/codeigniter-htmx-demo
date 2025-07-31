@@ -92,8 +92,7 @@ class Books extends BaseController
         $validation->setRules([
             'title'  => [ 'required', 'string', 'min_length[2]', 'max_length[100]' ],
             'author' => [ 'required', 'string', 'min_length[5]', 'max_length[100]' ],
-        ])
-        ;
+        ]);
 
         if (! $validation->run($post)) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_edit', [
@@ -133,8 +132,7 @@ class Books extends BaseController
         $validation->setRules([
             'title'  => [ 'required', 'string', 'min_length[2]', 'max_length[100]' ],
             'author' => [ 'required', 'string', 'min_length[5]', 'max_length[100]' ],
-        ])
-        ;
+        ]);
 
         if (! $validation->run($post)) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\books\table_row_add', [
