@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <span class="badge bg-green">New</span>
+        <span class="badge bg-green text-green-fg">New</span>
     </td>
     <td>
         <?= form_input('title', set_value('title'), ['class' => $validation->hasError('title') ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm']); ?>

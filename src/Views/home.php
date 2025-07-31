@@ -84,7 +84,7 @@
                     <div class="card-footer">
                         <h4>Was this request loaded with HTMX?</h4>
                         <div>
-                            <span class="badge bg-blue"><?= service('incomingrequest')->isHtmx() ? 'Yes' : 'No'; ?></span>
+                            <span class="badge bg-blue text-blue-fg"><?= service('incomingrequest')->isHtmx() ? 'Yes' : 'No'; ?></span>
                         </div>
                     </div>
                 </div>

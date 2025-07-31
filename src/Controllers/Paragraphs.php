@@ -4,6 +4,7 @@ namespace Michalsn\CodeIgniterHtmxDemo\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\HTTP\Method;
 use Michalsn\CodeIgniterHtmxDemo\Models\ParagraphModel;
 use ReflectionException;
 
@@ -43,7 +44,7 @@ class Paragraphs extends BaseController
 
         $validation = service('validation');
 
-        if ($this->request->getMethod() !== 'post') {
+        if ($this->request->getMethod() !== Method::POST) {
             return view('Michalsn\CodeIgniterHtmxDemo\Views\paragraphs\edit', [
                 'paragraph' => $paragraph, 'validation' => $validation,
             ]);
