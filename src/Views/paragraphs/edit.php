@@ -1,5 +1,4 @@
-<div id="modal-backdrop" class="modal-backdrop fade" style="display:block;"></div>
-<div id="modal" class="modal fade" tabindex="-1" style="display:block;">
+<div id="modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <?= form_open('paragraphs/edit/' . $paragraph->id, [

@@ -39,9 +39,9 @@
                         </div>
                     </div>
                     <?php $this->fragment('tasks'); ?>
-                    <div id="tasks" <?php if ($type !== 'active'): ?>hx-get="<?= site_url('tasks/' . $type); ?>" hx-swap="outerHTML" hx-trigger="tasksCleared from:body"<?php endif; ?>>
+                    <div id="tasks" <?php if ($type !== 'active'): ?>hx-get="<?= site_url('tasks/' . $type); ?>" hx-swap:inherited="outerHTML" hx-trigger="tasksCleared from:body"<?php endif; ?>>
                         <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs justify-content-md-center" hx-target="#tasks">
+                            <ul class="nav nav-tabs card-header-tabs justify-content-md-center" hx-target:inherited="#tasks">
                                 <li class="nav-item">
                                     <a href="<?= site_url('tasks'); ?>"
                                        hx-get="<?= site_url('tasks'); ?>" class="nav-link <?= $type === null ? 'active' : ''; ?>">All</a>

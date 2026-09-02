@@ -52,7 +52,7 @@ class Tasks extends BaseController
 
         if ($id = $model->insert($post)) {
 
-            $this->response->triggerClientEvent('taskAdded');
+            $this->response->triggerClientEvent('taskAdded', ['target' => 'body']);
 
             return view('Michalsn\CodeIgniterHtmxDemo\Views\tasks\task', [
                 'task' => $model->find($id),
@@ -81,10 +81,11 @@ class Tasks extends BaseController
             'type' => $task->type,
         ]);
 
-        $this->response->triggerClientEvent('taskToggled');
-        $this->response->triggerClientEvent('checkIfThereAreTasks', '', 'swap');
+        $this->response->triggerClientEvent('taskToggled', ['target' => 'body']);
 
         if ($this->request->getRawInputVar('type')) {
+            $this->response->setReswap('delete');
+
             return alert('success', 'Task updated.');
         }
 
@@ -127,9 +128,8 @@ class Tasks extends BaseController
         helper('alert');
 
         if (model(TaskModel::class)->delete($id)) {
-
-            $this->response->triggerClientEvent('taskDeleted');
-            $this->response->triggerClientEvent('checkIfThereAreTasks', '', 'swap');
+            $this->response->setReswap('delete');
+            $this->response->triggerClientEvent('taskDeleted', ['target' => 'body']);
 
             return alert('success', 'The task has been deleted.');
         }
@@ -144,7 +144,7 @@ class Tasks extends BaseController
     {
         helper('alert');
 
-        $this->response->triggerClientEvent('tasksCleared');
+        $this->response->triggerClientEvent('tasksCleared', ['target' => 'body']);
 
         if (model(TaskModel::class)->deleteCompleted()) {
             return alert('success', 'Completed tasks have been cleared.');

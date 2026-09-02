@@ -1,6 +1,6 @@
 <div class="row text-muted" id="tasks-summary"
      hx-get="<?= site_url('tasks/summary'); ?>"
-     hx-swap="outerHTML"
+     hx-swap:inherited="outerHTML"
      hx-trigger="taskAdded from:body, taskToggled from:body, taskDeleted from:body">
     <div class="col">
         <span id="tasks-count"

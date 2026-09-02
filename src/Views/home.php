@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <ul hx-boost="true">
+                        <ul hx-boost:inherited="true">
                             <li>
                                 <a href="<?= site_url('books'); ?>">Books</a> <small>(searching, pagination, inline edit)</small>
                             </li>

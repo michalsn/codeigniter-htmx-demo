@@ -10,13 +10,13 @@
             <input type="text" class="form-control" value="<?= $count; ?>">
             <button class="btn btn-primary" type="button" 
                     hx-get="<?= site_url('cells/counter/increment?count=' . $count); ?>" 
-                    hx-swap="morph:outerHTML" 
+                    hx-swap="outerMorph"
                     hx-target="closest .card">
                 +
             </button>
             <button class="btn btn-secondary" type="button" 
                     hx-get="<?= site_url('cells/counter/decrement?count=' . $count); ?>" 
-                    hx-swap="morph:outerHTML" 
+                    hx-swap="outerMorph"
                     hx-target="closest .card">
                 -
             </button>

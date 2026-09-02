@@ -1,13 +1,16 @@
 # CodeIgniter HTMX Demo
 
-This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. Demo requires:
+This is a demo for the [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) helper library. It targets the final htmx 4 request/response model.
 
-- CodeIgniter HTMX library installed via composer or manually,
-- CodeIgniter 4.5+
+The demo requires:
+
+- PHP 8.2 or later,
+- CodeIgniter 4.7 or later,
+- CodeIgniter HTMX 4.0 or later.
 
 ![CodeIgniter HTMX Demo](demo.gif)
 
-#### Available demos:
+## Available demos
 
 - **Books** - searching, pagination, inline edit
 - **Tasks** - events
@@ -16,18 +19,22 @@ This is a demo for [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-ht
 
 ## Installation
 
-1. Install [CodeIgniter 4](https://codeigniter.com/) with composer (command below) or [manually](https://codeigniter.com/user_guide/installation/installing_manual.html). 
+1. Install [CodeIgniter 4](https://codeigniter.com/) with Composer (command below) or [manually](https://codeigniter.com/user_guide/installation/installing_manual.html).
+
 ```console
-composer create-project codeigniter4/appstarter codeigniterhtmx
+composer create-project codeigniter4/appstarter:^4.7 codeigniterhtmx
 cd codeigniterhtmx
 ```
-2. Install [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) library with composer (command below) or [manually](https://michalsn.github.io/codeigniter-htmx/installation/#manual-installation).
-```console
-composer require michalsn/codeigniter-htmx
-```
-3. Manually download the ZIP file of this project and place it in the desired folder. 
 
-   - The example will assume that it will be `codeigniterhtmx/app/ThirdParty/htmx-demo`. 
+2. Install the [CodeIgniter HTMX](https://github.com/michalsn/codeigniter-htmx) library with Composer (command below) or [manually](https://michalsn.github.io/codeigniter-htmx/installation/#manual-installation).
+
+```console
+composer require michalsn/codeigniter-htmx:^4.0
+```
+
+3. Download the ZIP file of this project and place it in the desired folder.
+
+   - The example assumes that it will be `codeigniterhtmx/app/ThirdParty/htmx-demo`.
    - Then enable it by editing the `codeigniterhtmx/app/Config/Autoload.php` file and adding the `Michalsn\CodeIgniterHtmxDemo` namespace to the `$psr4` array, like in the below example:
 
 ```php
@@ -68,3 +75,16 @@ php spark db:seed Michalsn\CodeIgniterHtmxDemo\Database\Seeds\SeedDemo
 ## Running the demo
 
 The default route to the demo page is `demo`.
+
+## htmx 4
+
+The layout loads htmx 4.0.0 from jsDelivr with Subresource Integrity enabled. For production applications, consider [self-hosting htmx](https://four.htmx.org/docs#installing-htmx).
+
+The examples demonstrate the htmx 4 API, including:
+
+- explicit attribute inheritance with the `:inherited` suffix,
+- built-in `outerMorph` swaps without the former Idiomorph extension,
+- the standardized htmx 4 lifecycle event names,
+- `<hx-partial>` responses for toast notifications.
+
+When migrating an existing application, also consult the official [htmx 2 to htmx 4 migration guide](https://four.htmx.org/docs#migrating-from-htmx-2x-to-4x).

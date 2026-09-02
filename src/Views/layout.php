@@ -25,39 +25,11 @@
 
     <!-- JS files -->
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.1" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0" integrity="sha384-BvJpBiO8Kh31EqtJe5DRIeWrHWnCGkwytKs9NKFi86Hhw96dEqdEMzZDeK9iEGTc" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.7" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
     <script>
-        // general config
-        htmx.config.useTemplateFragments = true;
-
         htmx.onLoad(function(content) {
-
-            if (document.getElementById('new-task')) {
-                // tasks
-                htmx.on('#new-task', 'htmx:afterRequest', function (ev) {
-                    ev.detail.elt.value = '';
-
-                    const event = new Event('checkIfThereAreTasks');
-                    document.body.dispatchEvent(event);
-                });
-
-                // show empty tasks panel
-                document.body.addEventListener('checkIfThereAreTasks', function (ev) {
-                    const itemListEmpty = document.getElementById('task-list-empty');
-                    const itemList = document.getElementById('task-list');
-                    if (itemList.childElementCount > 0) {
-                        itemListEmpty.classList.add('d-none');
-                        itemList.classList.remove('d-none');
-                    } else {
-                        itemListEmpty.classList.remove('d-none');
-                        itemList.classList.add('d-none');
-                    }
-                })
-            }
-
             // paragraphs
             const sortables = content.querySelectorAll('.sortable');
             if (sortables.length) {
@@ -71,27 +43,127 @@
                 }
             }
 
-            document.body.addEventListener('closeModal', function (ev) {
-                closeModal();
+        });
+
+        const refreshTaskListState = function () {
+            const itemListEmpty = document.getElementById('task-list-empty');
+            const itemList = document.getElementById('task-list');
+
+            if (! itemListEmpty || ! itemList) {
+                return;
+            }
+
+            if (itemList.childElementCount > 0) {
+                itemListEmpty.classList.add('d-none');
+                itemList.classList.remove('d-none');
+            } else {
+                itemListEmpty.classList.remove('d-none');
+                itemList.classList.add('d-none');
+            }
+        };
+
+        const getFallbackBackdrop = function () {
+            let backdrop = document.getElementById('modal-backdrop');
+
+            if (! backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.id = 'modal-backdrop';
+                backdrop.className = 'modal-backdrop fade';
+                document.body.appendChild(backdrop);
+            }
+
+            return backdrop;
+        };
+
+        const cleanupModalState = function () {
+            const container = document.getElementById('modals-container');
+
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('padding-right');
+
+            document.querySelectorAll('.modal-backdrop').forEach(function (backdrop) {
+                backdrop.remove();
             });
+
+            if (container) {
+                container.innerHTML = '';
+            }
+        };
+
+        const openModal = function (modal) {
+            if (window.bootstrap && window.bootstrap.Modal) {
+                const modalInstance = window.bootstrap.Modal.getOrCreateInstance(modal);
+
+                modal.addEventListener('hidden.bs.modal', function onHidden() {
+                    cleanupModalState();
+                    modal.removeEventListener('hidden.bs.modal', onHidden);
+                });
+
+                modalInstance.show();
+
+                return;
+            }
+
+            const backdrop = getFallbackBackdrop();
+
+            modal.style.display = 'block';
+            modal.removeAttribute('aria-hidden');
+            modal.setAttribute('aria-modal', 'true');
+            modal.classList.add('show');
+            backdrop.classList.add('show');
+            document.body.classList.add('modal-open');
+        };
+
+        document.addEventListener('closeModal', closeModal);
+
+        htmx.on('htmx:after:request', function (ev) {
+            const detail = ev.detail || {};
+            const ctx = detail.ctx || {};
+            const response = ctx.response || null;
+            const source = ctx.sourceElement || null;
+
+            if (source && source.id === 'new-task' && response && response.status < 400) {
+                source.value = '';
+            }
+        });
+
+        htmx.on('htmx:after:swap', function (ev) {
+            refreshTaskListState();
+
+            const modal = document.getElementById('modal');
+
+            if (modal && ! modal.classList.contains('show')) {
+                setTimeout(function () {
+                    openModal(modal);
+                }, 10);
+            }
         });
 
         function closeModal() {
-            const container = document.getElementById('modals-container');
-            const backdrop = document.getElementById('modal-backdrop');
             const modal = document.getElementById('modal');
 
-            modal.classList.remove('show');
-            backdrop.classList.remove('show');
+            if (! modal) {
+                return;
+            }
 
-            setTimeout(function() {
-                container.innerHTML = '';
+            if (window.bootstrap && window.bootstrap.Modal) {
+                window.bootstrap.Modal.getOrCreateInstance(modal).hide();
+                return;
+            }
+
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            modal.removeAttribute('aria-modal');
+            modal.setAttribute('aria-hidden', 'true');
+
+            setTimeout(function () {
+                cleanupModalState();
             }, 200);
         }
     </script>
 
 </head>
-<body hx-ext="morph">
+<body>
 <div class="page">
     <header class="navbar navbar-expand-md d-print-none" data-bs-theme="dark">
         <div class="container-fluid">
@@ -101,7 +173,7 @@
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                 CodeIgniter HTMX Demo
             </h1>
-            <div class="collapse navbar-collapse" id="navbar-menu" hx-boost="true">
+            <div class="collapse navbar-collapse" id="navbar-menu" hx-boost:inherited="true">
                 <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
                     <ul class="navbar-nav">
                         <li class="nav-item">

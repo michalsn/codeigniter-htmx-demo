@@ -10,13 +10,13 @@
             <input type="text" class="form-control" value="<?= $count; ?>">
             <button class="btn btn-primary" type="button" 
                     hx-get="<?= signedurl()->siteUrl('cells/counter-signed/increment?' . $this->getQueryString()); ?>"
-                    hx-swap="morph:outerHTML" 
+                    hx-swap="outerMorph"
                     hx-target="closest .card">
                 +
             </button>
             <button class="btn btn-secondary" type="button" 
                     hx-get="<?= signedurl()->siteUrl('cells/counter-signed/decrement?' . $this->getQueryString()); ?>"
-                    hx-swap="morph:outerHTML" 
+                    hx-swap="outerMorph"
                     hx-target="closest .card">
                 -
             </button>

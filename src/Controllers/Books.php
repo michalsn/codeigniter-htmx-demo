@@ -168,6 +168,8 @@ class Books extends BaseController
         helper('alert');
 
         if (model(BookModel::class)->delete($id)) {
+            $this->response->setReswap('delete');
+
             return alert('success', 'The book has been deleted.');
         }
 

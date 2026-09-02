@@ -3,7 +3,7 @@
         <h3 class="card-title">
             Books Table
         </h3>
-        <div class="card-actions" hx-swap="morph:outerHTML" hx-target="closest .card">
+        <div class="card-actions" hx-swap:inherited="outerMorph" hx-target:inherited="closest .card">
             <div class="row">
                 <div class="col-6">
                     <div class="input-group">
@@ -46,7 +46,7 @@
     <?php else: ?>
         <table class="table card-table table-vcenter">
             <thead>
-                <tr hx-include="closest .card" hx-swap="morph:outerHTML" hx-target="closest .card">
+                <tr hx-include:inherited="closest .card" hx-swap:inherited="outerMorph" hx-target:inherited="closest .card">
                     <th class="w-1"><?= anchor($table->sortByURL('id'), 'ID', ['hx-get' => site_url($table->sortByURL('id'))]); ?> <?= $table->getSortIndicator('id'); ?></th>
                     <th class="col-4"><?= anchor($table->sortByURL('title'), 'Title', ['hx-get' => site_url($table->sortByURL('title'))]); ?> <?= $table->getSortIndicator('title'); ?></th>
                     <th class="col-4"><?= anchor($table->sortByURL('author'), 'Author', ['hx-get' => site_url($table->sortByURL('author'))]); ?> <?= $table->getSortIndicator('author'); ?></th>
@@ -60,7 +60,7 @@
             </tbody>
         </table>
 
-        <div class="p-2" hx-include="closest .card" hx-swap="outerHTML" hx-target="closest .card">
+        <div class="p-2" hx-include:inherited="closest .card" hx-swap:inherited="outerHTML" hx-target:inherited="closest .card">
             <?= $pager->links('default', 'default_htmx_full'); ?>
         </div>
 

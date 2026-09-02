@@ -33,7 +33,7 @@
             </tbody>
         </table>
 
-        <div class="p-2" hx-include="closest .card" hx-swap="outerHTML" hx-target="closest .card">
+        <div class="p-2" hx-include:inherited="closest .card" hx-swap:inherited="outerHTML" hx-target:inherited="closest .card">
             <?= $pager->links('default', 'default_htmx_full'); ?>
         </div>
 
